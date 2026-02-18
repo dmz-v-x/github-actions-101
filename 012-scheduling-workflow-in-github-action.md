@@ -57,18 +57,18 @@ No human interaction required.
 
 ### 4. Basic Scheduled Workflow Example
 
-name: Nightly Workflow
-
-on:
-	schedule:
-		- cron: '0 0 * * *'
-
-jobs:
-	steps_job:
-		runs-on: ubuntu-latest
-		steps:
-			- name: Run Task
-				run: echo "Running nightly task"
+	name: Nightly Workflow
+	
+	on:
+		schedule:
+			- cron: '0 0 * * *'
+	
+	jobs:
+		steps_job:
+			runs-on: ubuntu-latest
+			steps:
+				- name: Run Task
+					run: echo "Running nightly task"
 
 ---
 
@@ -174,10 +174,10 @@ cron: '0 0 * * 0'
 
 ### 10. Special Cron Characters
 
-* → Any value  
-*/n → Every n intervals  
-, → Multiple values  
-- → Range  
+	* → Any value  
+	*/n → Every n intervals  
+	, → Multiple values  
+	- → Range  
 
 Example:
 
@@ -195,10 +195,10 @@ Workflows can have multiple schedules.
 
 Example:
 
-on:
-	schedule:
-		- cron: '0 0 * * *'
-		- cron: '0 12 * * *'
+	on:
+		schedule:
+			- cron: '0 0 * * *'
+			- cron: '0 12 * * *'
 
 Runs twice daily.
 
@@ -209,11 +209,11 @@ Runs twice daily.
 Very common pattern.
 
 Example:
-
-on:
-	push:
-	schedule:
-		- cron: '0 0 * * *'
+	
+	on:
+		push:
+		schedule:
+			- cron: '0 0 * * *'
 
 Meaning:
 
@@ -246,18 +246,18 @@ Schedule does NOT change execution environment.
 
 ### 15. Example: Cleanup Workflow
 
-name: Cleanup Workflow
-
-on:
-	schedule:
-		- cron: '0 2 * * *'
-
-jobs:
-	cleanup:
-		runs-on: ubuntu-latest
-		steps:
-			- name: Cleanup Logs
-				run: echo "Cleaning old logs"
+	name: Cleanup Workflow
+	
+	on:
+		schedule:
+			- cron: '0 2 * * *'
+	
+	jobs:
+		cleanup:
+			runs-on: ubuntu-latest
+			steps:
+				- name: Cleanup Logs
+					run: echo "Cleaning old logs"
 
 ---
 
@@ -356,10 +356,10 @@ Useful for:
 
 ### 23. Example Mixed Logic
 
-steps:
-	- name: Run Only on Schedule
-		if: github.event_name == 'schedule'
-		run: echo "Scheduled execution"
+	steps:
+		- name: Run Only on Schedule
+			if: github.event_name == 'schedule'
+			run: echo "Scheduled execution"
 
 ---
 
